@@ -1,0 +1,19 @@
+name: download_ranges
+
+# Controls when the workflow will run
+on:
+  schedule:
+  - cron: "0 0 * * *"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  wget:
+    runs-on: ubuntu-latest
+    steps:
+    - name: wget
+      uses: wei/wget@v1
+      with:
+        args: -O ranges.json https://cdn.nuclei.sh/
