@@ -1,11 +1,19 @@
 # ipcdn
-Check which cdn provider your IPs belong to
+Check which CDN providers an IP list belongs to
 
 # Description
 
-This tool is based on CIDR ranges collected by ProjectDiscovery on cdncheck project. This is a cli implementation for easy use. Also it contains a GitHub action to download everyday the json containing CIDRs.
+This tool is based on the CIDR ranges collected by ProjectDiscovery in their [cdncheck](https://github.com/projectdiscovery/cdncheck) project. This is a cli implementation for easy use and it also contains a [GitHub action](https://github.com/six2dez/ipcdn/actions/workflows/download.yml) to download everyday the json containing CIDRs.
 
-The tool reads from stdin the IP and (by default) it prints the IPs belonging to any CDN provider.
+> **Its main use case is to avoid port scanning and/or other intensive tasks on IPs hosted outside our target and that can also result in blocking or banning.**
+
+The tool reads from stdin the list of IPs and (by default) prints the IPs belonging to any CDN provider. Using the flags you can specify to print the ones that do not belong to CDNs or to print the detail of which provider it uses.
+
+It detects the following CDNs: Azure, Cloudflare, Cloudfront, Fastly and Incapsula.
+
+# Install
+
+`go install -v github.com/six2dez/ipcdn@latest`
 
 # Modes
 

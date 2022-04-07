@@ -22,8 +22,8 @@ jobs:
         wget -O ranges.txt https://cdn.nuclei.sh/
     - name: Commit files
       run: |
-        git config --local user.email "six2dez@gmail.com"
-        git config --local user.name "six2dez"
+        git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+        git config --local user.name 'github-actions[bot]'
         git add -A ranges.txt
         git commit -m "CDN ip ranges daily push from cdn.nuclei.sh" -a
     - name: Push changes
