@@ -19,7 +19,7 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - name: Create local changes
       run: |
-        curl -s -O ranges.txt https://cdn.nuclei.sh/
+        wget -O ranges.txt https://cdn.nuclei.sh/
     - name: Commit files
       run: |
         git config --local user.email "six2dez@gmail.com"
