@@ -71,7 +71,7 @@ func scrapeProjectDiscovery(httpClient *http.Client) (map[string][]string, error
 		data         map[string][]string
 	)
 
-	url = "https://1cdn.nuclei.sh"
+	url = "https://cdn.nuclei.sh"
 	url_fallback = "https://raw.githubusercontent.com/six2dez/ipcdn/main/ranges.txt"
 
 	for retries > 0 {
