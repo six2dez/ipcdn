@@ -17,3 +17,16 @@ jobs:
       uses: wei/wget@v1
       with:
         args: -O ranges.json https://cdn.nuclei.sh/
+  push-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pushes file
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'ranges.json'
+        destination_repo: 'six2dez/ipcdn'
+        user_email: 'example@email.com'
+        user_name: 'six2dez'
+        commit_message: 'Ip CDN ranges daily push from cdn.nuclei.sh'
+      
