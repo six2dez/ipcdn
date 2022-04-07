@@ -10,24 +10,24 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  wget:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: wget
-      uses: wei/wget@v1
+    - uses: actions/checkout@v2
       with:
-        args: -O ranges.json https://cdn.nuclei.sh/
-  push-file:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Pushes file
-      uses: dmnemec/copy_file_to_another_repo_action@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+    - name: Create local changes
+      run: |
+        curl -s -O ranges.txt https://cdn.nuclei.sh/
+    - name: Commit files
+      run: |
+        git config --local user.email "six2dez@gmail.com"
+        git config --local user.name "six2dez"
+        git add -A ranges.txt
+        git commit -m "CDN ip ranges daily push from cdn.nuclei.sh" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
       with:
-        source_file: 'ranges.json'
-        destination_repo: 'six2dez/ipcdn'
-        user_email: 'example@email.com'
-        user_name: 'six2dez'
-        commit_message: 'Ip CDN ranges daily push from cdn.nuclei.sh'
-      
+        github_token: ${{ secrets.API_TOKEN_GITHUB }}
+        branch: ${{ github.ref }}
