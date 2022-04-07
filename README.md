@@ -37,3 +37,17 @@ Usage of ./ipcdn:
          (default "cdn")
   -v    verbose mode
 ```
+
+# Screenshots
+
+## Default (only CDN)
+![image](https://user-images.githubusercontent.com/24670991/162330965-bc984bd8-388f-4f6f-aead-d90a8eb0e63e.png)
+
+## Default with verbose
+![image](https://user-images.githubusercontent.com/24670991/162331123-3489f885-497e-4b52-9e98-766c3ba8c580.png)
+
+## Not (not CDN)
+![image](https://user-images.githubusercontent.com/24670991/162331204-8f13bb33-6dc9-471b-9a82-10cfd8437585.png)
+
+## All (verbose)
+![image](https://user-images.githubusercontent.com/24670991/162330779-0be6163c-a661-4c9c-9b43-93cb9227d342.png)
