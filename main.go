@@ -163,7 +163,7 @@ func main() {
 		for o := range output {
 			if !verbose {
 				if method != "all" {
-					fmt.Println(o)
+					_ = o
 				}
 			}
 		}
@@ -193,17 +193,18 @@ func isListening(ip string, verbose bool, method string) bool {
 	}
 
 	if found, provider, err := client.Check(net.ParseIP(ip)); found && provider != "" && err == nil {
-		if verbose || method == "all" {
+		if verbose && (method == "all" || method == "cdn") {
 			fmt.Println(ip + "-" + provider)
+		} else if method == "all" || method == "cdn" {
+			fmt.Println(ip)
 		}
+
 	} else {
 		provider := "not CDN"
-		if method == "not" && !verbose {
-			fmt.Println(ip)
-		} else if method == "all" || (method == "not" && verbose) {
+		if verbose && (method == "all" || method == "not") {
 			fmt.Println(ip + "-" + provider)
-		} else {
-			return false
+		} else if method == "all" || method == "not" {
+			fmt.Println(ip)
 		}
 	}
 
