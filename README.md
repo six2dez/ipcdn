@@ -1,3 +1,5 @@
+# **This repository is archived since 10/05/2023 in favor of https://github.com/projectdiscovery/cdncheck**
+
 # ipcdn
 Check which CDN providers an IP list belongs to
 
